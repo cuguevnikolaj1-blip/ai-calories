@@ -4,8 +4,7 @@ import google.generativeai as genai
 
 # --- 1. НАСТРОЙКА ИИ ---
 # Твой временный ключ вшит прямо сюда (с защитой от пробелов)
-API_KEY = "AIzaSyAQHMoHcn7RGXnKyYEFRcIWDbyLktvfSBI".strip()
-genai.configure(api_key=API_KEY)
+API_KEY = st.secrets["API_KEY"]genai.configure(api_key=API_KEY)
 
 model = genai.GenerativeModel('gemini-2.5-flash')
 
@@ -50,4 +49,5 @@ if image is not None:
                 st.success("Готово!")
                 st.write(response.text)
             except Exception as e:
+
                 st.error(f"Произошла ошибка: {e}")
